@@ -14,7 +14,10 @@ public class Handler001Test {
     public void handleRequest() throws Exception {
         final Handler001 target = new Handler001();
 
-        Request request = new Request("田中", "太郎");
+        Request request = new Request();
+        request.setFirstName("田中");
+        request.setLastName("太郎");
+
         Response response = target.handleRequest(request, ContextMock.get());
 
         assertThat(response.getFullName(), is("田中 太郎"));

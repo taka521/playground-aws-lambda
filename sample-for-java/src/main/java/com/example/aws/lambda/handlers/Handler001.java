@@ -11,29 +11,41 @@ public class Handler001 implements RequestHandler<Handler001.Request, Handler001
 
     @Override
     public Response handleRequest(Request input, Context context) {
-        return new Response(input.firstName + " " + input.lastName);
+        Response response = new Response();
+        response.setFullName(input.firstName + " " + input.lastName);
+        return response;
     }
 
     static class Request {
-        private final String firstName;
-        private final String lastName;
+        private String firstName;
+        private String lastName;
 
-        public Request(String firstName, String lastName) {
-            this.firstName = firstName;
-            this.lastName = lastName;
+        public String getFirstName() {
+            return firstName;
         }
 
+        public void setFirstName(String firstName) {
+            this.firstName = firstName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        public void setLastName(String lastName) {
+            this.lastName = lastName;
+        }
     }
 
     static class Response {
-        private final String fullName;
-
-        public Response(String fullName) {
-            this.fullName = fullName;
-        }
+        private String fullName;
 
         public String getFullName() {
             return fullName;
+        }
+
+        public void setFullName(String fullName) {
+            this.fullName = fullName;
         }
     }
 }
